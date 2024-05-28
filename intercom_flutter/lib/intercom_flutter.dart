@@ -35,9 +35,10 @@ class Intercom {
     String appId, {
     String? androidApiKey,
     String? iosApiKey,
+    String? apiBase,
   }) {
-    return IntercomFlutterPlatform.instance
-        .initialize(appId, androidApiKey: androidApiKey, iosApiKey: iosApiKey);
+    return IntercomFlutterPlatform.instance.initialize(appId,
+        androidApiKey: androidApiKey, iosApiKey: iosApiKey, apiBase: apiBase);
   }
 
   /// You can check how many unread conversations a user has

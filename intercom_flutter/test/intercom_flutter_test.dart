@@ -16,17 +16,20 @@ void main() {
       final appId = 'mock';
       final androidApiKey = 'android-key';
       final iosApiKey = 'ios-key';
+      final apiBase = 'https://api-base.com';
 
       Intercom.instance.initialize(
         appId,
         androidApiKey: androidApiKey,
         iosApiKey: iosApiKey,
+        apiBase: apiBase,
       );
 
       expectMethodCall('initialize', arguments: {
         'appId': appId,
         'androidApiKey': androidApiKey,
         'iosApiKey': iosApiKey,
+        'apiBase': apiBase,
       });
     });
 

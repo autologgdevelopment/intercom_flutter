@@ -35,6 +35,7 @@ abstract class IntercomFlutterPlatform extends PlatformInterface {
     String appId, {
     String? androidApiKey,
     String? iosApiKey,
+    String? apiBase,
   }) {
     throw UnimplementedError('initialize() has not been implemented.');
   }

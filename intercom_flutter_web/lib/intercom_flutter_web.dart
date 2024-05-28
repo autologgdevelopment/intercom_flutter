@@ -40,11 +40,8 @@ class IntercomFlutterWeb extends IntercomFlutterPlatform {
   }
 
   @override
-  Future<void> initialize(
-    String appId, {
-    String? androidApiKey,
-    String? iosApiKey,
-  }) async {
+  Future<void> initialize(String appId,
+      {String? androidApiKey, String? iosApiKey, String? apiBase}) async {
     if (globalContext.getProperty('Intercom'.toJS) == null) {
       // Intercom script is not added yet
       // Inject it from here in the body
@@ -52,6 +49,7 @@ class IntercomFlutterWeb extends IntercomFlutterPlatform {
           web.document.createElement("script") as web.HTMLScriptElement;
       script.text = """
           window.intercomSettings = ${updateIntercomSettings('app_id', "'$appId'")};
+          window.intercomSettings = ${updateIntercomSettings('api_base', "'$apiBase'")};
           (function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/' + '$appId';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s, x);};if(document.readyState==='complete'){l();}else if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();  
       """;
       if (web.document.body != null) {

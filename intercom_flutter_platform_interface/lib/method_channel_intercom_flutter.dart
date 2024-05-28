@@ -12,11 +12,13 @@ class MethodChannelIntercomFlutter extends IntercomFlutterPlatform {
     String appId, {
     String? androidApiKey,
     String? iosApiKey,
+    String? apiBase,
   }) async {
     await _channel.invokeMethod('initialize', {
       'appId': appId,
       'androidApiKey': androidApiKey,
       'iosApiKey': iosApiKey,
+      'apiBase': apiBase,
     });
   }
 
